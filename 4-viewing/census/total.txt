@@ -1,0 +1,7 @@
+CREATE VIEW "total" AS
+SELECT SUM("families") AS "families",
+SUM("household") AS "housedhold",
+SUM("population") AS "population",
+SUM("male") AS "male",
+SUM("female") AS "female"
+FROM "census";

@@ -1,0 +1,60 @@
+CREATE TABLE `Users` (
+    `id` INT,
+    `first_name` VARCHAR(32),
+    `last_name` VARCHAR(32),
+    `passward`VARCHAR (32),
+    PRIMARY KEY (`id`)
+);
+CREATE TABLE `Schools`(
+    `id` INT,
+    `user_id` INT,
+    `name` VARCHAR (32),
+    `type` ENUM ('Primary','Secondary','Higher Education'),
+    `location` VARCHAR(32),
+    `year` year,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `User`(`id`)
+);
+CREATE TABLE `Companies`(
+    `id` INT,
+    `user_id` INT,
+    `name` VARCHAR (32),
+    `location` VARCHAR(32),
+    `industry` ENUM ('Technology','Education','Business'),
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `User`(`id`)
+)
+CREATE TABLE `user_connections`(
+    `id` INT,
+    `user1_id` INT,
+    `user2_id` INT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user1_id`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`user2_id`) REFERENCES `user`(`id`),
+    CHECK (`user1_id`!=`user2_id`),
+    UNIQUE (`user1_id","user2_id`)
+);
+
+CREATE TABLE `school_connections`(
+    `id` INT,
+    `start date` DATETIME,
+    `end_date` DATETIME,
+    `type_of_degree` VARCHAR(10),
+    `user_id` INT,
+    `school_id` INT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`school_id`) REFERENCES `schools`(`id`)
+);
+
+CREATE TABLE `companies_connections`(
+    `id` INT,
+    `start date` DATETIME,
+    `end_date` DATETIME,
+    `user_id` INT,
+    `title` VARCHAR(32),
+    `company_id` INT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`company_id`) REFERENCES `Companies`(`id`)
+);

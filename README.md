@@ -17,6 +17,7 @@ To make your learning journey even more accessible, solutions for each week's as
 - **Week 4**: Discover more complex database queries and transactions in the 'week-4' branch.
 - **Week 5**: Discover how to optimize your databases and your queries'week-5' branch.
 - **Week 6**: Discover how to Scale your database to handle alot of requests'week-6' branch.
+- **Final project**: application on what you learned in the course by design a full database for bank system
 
 ### Getting Started
 

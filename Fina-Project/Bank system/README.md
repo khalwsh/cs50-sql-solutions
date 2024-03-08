@@ -1,5 +1,9 @@
 # Design Document
 
+## ER Diagram
+
+<img src = "https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/ER%20Diagram.jpeg">
+
 ## Scope
 
 

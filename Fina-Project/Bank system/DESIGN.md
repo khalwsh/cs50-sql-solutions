@@ -14,7 +14,7 @@ Video overview: <URL HERE>
 
 * you can check requirements [here](https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/Bank%20system/bank%20system%20data%20base.txt)
 
-### Person 
+## Person 
 
 ##### Description:
 This entity will keep information about each person that interacts with the bank, either as a customer, an employee, or any other role.
@@ -38,7 +38,7 @@ Address: The person’s mailing address. Usually, you would store this informati
 TaxIdentifier: This number or code is used to uniquely identify the person or organization for tax purposes (like SSNs or TINs in the US). We will use a VARCHAR(20) datatype. We will use this attribute as an additional Identifier for the entity.
 
 
-### Branch
+## Branch
 
 ##### Description:
 This entity will keep basic information about the different branches or offices of the bank.

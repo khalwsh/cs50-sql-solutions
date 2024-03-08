@@ -1,8 +1,6 @@
 # Design Document
 
-By Khaled labeb
-
-Video overview: <URL HERE>
+* By Khaled labeb
 
 ## Scope
 

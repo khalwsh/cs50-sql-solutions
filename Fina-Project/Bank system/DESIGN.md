@@ -12,7 +12,7 @@ Video overview: <URL HERE>
 
 ## Functional Requirements
 
-* you can check requirements [here]([https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/Bank%20system/bank%20system%20data%20base.txt])
+* you can check requirements <https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/Bank%20system/bank%20system%20data%20base.txt>
 
 
 ## Representation

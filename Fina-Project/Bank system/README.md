@@ -1,7 +1,5 @@
 # Design Document
 
-* By Khaled labeb
-
 ## Scope
 
 

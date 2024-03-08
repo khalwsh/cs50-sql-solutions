@@ -87,7 +87,6 @@ Note #1: Each employee is related to a Person. We will see how to create those r
 
 Note #2: Customer type could (and should) be normalized in a separate entity. To keep the model simple, we are using a denormalized version.
 
-}
 
 ## Account
 
@@ -186,36 +185,36 @@ Note #2: Transaction types could (and should) be normalized in a separate entity
 
 # relations
 
-Person – Employee
+## Person – Employee
 Each Employee in our model is a single Person, but not all persons are employees. Once again, we need to establish a 1:N relationship between the two tables, N being either 0 or 1.
 
-Branch – Employee
+## Branch – Employee
 All employees work at a branch of the bank, and every branch can have many employees, so we need to create a 1:N relationship between the Branch and Employee entities.
 
-Customer – Account
+## Customer – Account
 A customer can usually have multiple accounts; depending on legislation and regulations, most systems allow shared accounts between multiple individual customers (family members, etc.). To represent this in our system, we are going to create a many-to-one (M:N) relationship between Customer and Account.
 
 After creating the relationship, we need to verify that the relationship is mandatory on the customer side. There can be customers without any account, but each account must be related to at least one customer.
 
-Branch – Account
+## Branch – Account
 This is a 1:N relationship, since a single branch can have multiple accounts and each account must belong to one and only one branch.
 
-Customer – Loan
+## Customer – Loan
 This is usually a 1:N relationship, since loans are granted to a single customer but a customer can have multiple loans.
 
-Loan – LoanPayment
+## Loan – LoanPayment
 This is also a 1:N relationship. We need to ensure that both sides are mandatory, since each payment must belong to a loan and each loan must have at least one scheduled payment.
 
-LoanPayment – Transaction
+## LoanPayment – Transaction
 A loan payment is usually paid in a single operation, but most banking systems will allow for partial payments. This means that we need to create a 1:N relationship between the Payment and Transaction entities but with both sides being non-mandatory.
 
-Account – Transaction
+## Account – Transaction
 This is also a 1:N relationship, since transactions involve a single account and accounts can have multiple transactions.
 
-Employee – Transaction
+## Employee – Transaction
 Most transactions are performed directly by users via banking apps, ONLINE BANKING, or ATMs. However, there are still some operations that can be made at a bank office and involve an employee. To support this, we need to establish a 1:N relationship between the Employee and Transaction entities and ensure that none of the sides are mandatory.
 
-Transaction – Transaction
+## Transaction – Transaction
 There are several scenarios where a transaction needs to be related to another transaction in the system. Some of them are:
 
 Transfers between two accounts. The transaction that “adds” money to the target account should be related to the one that “subtracts” money from the source account.

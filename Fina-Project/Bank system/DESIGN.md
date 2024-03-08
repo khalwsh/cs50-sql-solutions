@@ -1,24 +1,19 @@
 # Design Document
 
-By YOUR NAME HERE
+By Khaled labeb
 
 Video overview: <URL HERE>
 
 ## Scope
 
-In this section you should answer the following questions:
 
-* What is the purpose of your database?
-* Which people, places, things, etc. are you including in the scope of your database?
-* Which people, places, things, etc. are *outside* the scope of your database?
+* representing a bank system database
+* in this database you can be person or customer or empolyee and have representation for your transactions
 
 ## Functional Requirements
 
-In this section you should answer the following questions:
-
-* What should a user be able to do with your database?
-* What's beyond the scope of what a user should be able to do with your database?
-
+* you can check requirements here [website (https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/Bank%20system/bank%20system%20data%20base.txt)]
+* 
 ## Representation
 
 ### Entities

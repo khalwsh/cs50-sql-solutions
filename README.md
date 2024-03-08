@@ -24,7 +24,7 @@ To make your learning journey even more accessible, solutions for each week's as
 1. Clone the repository to your local machine.
 2. Navigate to the specific branch corresponding to the week you're interested in.
 3. Review the solution code, but remember to uphold academic integrity.
-4. 
+   
 ### Disclaimer
 
 This repository is not affiliated with Harvard University or CS50.

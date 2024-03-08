@@ -13,13 +13,14 @@ Video overview: <URL HERE>
 ## Functional Requirements
 
 * you can check requirements [here](https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/Bank%20system/bank%20system%20data%20base.txt)
-Person 
-{
-Description:
+
+### Person 
+
+##### Description:
 This entity will keep information about each person that interacts with the bank, either as a customer, an employee, or any other role.
 Note: A Person can be an individual or an organization.
 
-Attributes:
+##### Attributes:
 PersonID: This will be a unique ID number and primary identifier (later the surrogate primary key) of the entity. We will use an INTEGER.
 
 LastName: The person’s surname. We will use a VARCHAR(100) datatype.
@@ -36,14 +37,13 @@ Address: The person’s mailing address. Usually, you would store this informati
 
 TaxIdentifier: This number or code is used to uniquely identify the person or organization for tax purposes (like SSNs or TINs in the US). We will use a VARCHAR(20) datatype. We will use this attribute as an additional Identifier for the entity.
 
-}
 
-Branch
-{
-Description:
+### Branch
+
+##### Description:
 This entity will keep basic information about the different branches or offices of the bank.
 
-Attributes:
+##### Attributes:
 BranchID: A unique identification number and the surrogate primary key of the table. INTEGER
 
 BranchName: The commercial name of the branch or office and an additional identifier. (There cannot be two branches with the same name.) VARCHAR(100) datatype.
@@ -53,36 +53,35 @@ BranchCode: An internal code used to identify the branch in account numbers. Thi
 Address: The physical address of this branch. As with the Person entity, we are not normalizing this information for simplicity’s sake. VARCHAR(100) datatype.
 
 PhoneNumber: The branch phone number. VARCHAR(20) datatype.
-}
 
-Employee
+### Employee
 {
-Description:
+##### Description:
 This entity will store information about the persons that are also bank employees.
 
-Attributes:
+##### Attributes:
 EmployeeID: A unique ID number and the surrogate primary key of the table. INTEGER.
 
 Position: Describes the position of the employee. VARCHAR(20) d
 
-notes:
+##### notes:
 Note #1: Each employee is related to a Person and to a Branch. We will see how to create those relationships later in this article.
 
 Note #2: Positions could (and should) be normalized in a separate entity. To keep the model simple, we are using a denormalized version.
-}
 
-Customer
-{
-Description:
+
+### Customer
+
+##### Description:
 This entity will store information about the persons that are also bank customers.
 
-Attributes:
+##### Attributes:
 
 CustomerID: A unique identification number and the surrogate primary key of the table. INTEGER.
 
 CustomerType: Categorizes the client based on bank policies (g. regular, premium, etc.). VARCHAR(20) datatype.
 
-notes:
+##### notes:
 
 Note #1: Each employee is related to a Person. We will see how to create those relationships later in this article.
 
@@ -90,11 +89,12 @@ Note #2: Customer type could (and should) be normalized in a separate entity. To
 
 }
 
-Account{
-Description:
+### Account
+
+##### Description:
 This entity keeps information about the different accounts each customer or group of customers can have in the bank.
 
-attributes:
+##### attributes:
 
 AccountID: The surrogate primary key of the table. INTEGER
 AccountType: Defines the account type (e.g. savings, checking, credit, etc.) and serves as part of the entity’s unique identifier. VARCHAR(20) datatype.
@@ -109,20 +109,18 @@ DateClosed: Date the account was closed. DATE datatype and not mandatory.
 
 AccountStatus: Defines if the account is active, suspended, closed, etc. VARCHAR(20) datatype.
 
-notes:
+##### notes:
 Note #1: Each account is related to one or more Customer and to a Branch. We will see how to create those relationships later in this article.
 
 Note #2: Both account type and status could (and should) be normalized in separate entities. To keep the model simple, we are using a denormalized version.
 
-}
 
-Loan
-{
+### Loan
 
-Description:
+##### Description:
 This entity keeps information about the different loans that the bank grants to customers
 
-Attributes:
+##### Attributes:
 
 LoanID: The surrogate primary key of the table. INTEGER
 
@@ -140,19 +138,17 @@ EndDate: The date the loan should be completely paid. DATE
 
 Status: Defines if the loan is active, canceled, closed, etc. VARCHAR(20) datatype.
 
-notes:
+##### notes:
 Note #1: Each loan is related to one Customer. We will see how to create those relationships later in this article.
 
 Note #2: Both loan type and status could (and should) be normalized in separate entities. To keep the model simple, we are using a denormalized version.
 
-}
+### Loan Payment
 
-Loan Payment
-{
-Description:
+##### Description:
 Loans usually have a scheduled number of payments that include both principal and interest.
 
-Attributes:
+##### Attributes:
 
 LoanPaymentID: The surrogate primary key of the table. INTEGER
 
@@ -167,14 +163,12 @@ InterestAmount: The expected interest amount to be paid on the scheduled date. D
 PaidAmount: The actual amount paid. DECIMAL(10, 2) datatype.
 PaidDate: The actual date when the payment was completed. DATE datatype and not mandatory.
 
-}
-
-Transaction
+### Transaction
 {
-Description:
+##### Description:
 Each operation performed in a bank is usually represented by one transaction (e.g. deposit, withdrawal) or multiple transactions (e.g. account transfers).
 
-Attributes:
+##### Attributes:
 TransactionID: The surrogate primary key of the table. INTEGER
 
 TransactionType: Defines the type of transaction performed (e.g. deposit, withdrawal, transfer). VARCHAR(20) datatype.
@@ -183,14 +177,14 @@ Amount: The amount involved in the operation. DECIMAL(10, 2) datatype.
 
 TransactionDate: The date and time the transaction was performed. DATETIME
 
-notes:
+##### notes:
 
 Note #1: Each transaction is related to one Account and can be related to another Transaction (for example, when a transfer between two accounts is performed). It can also be related to an Employee if it was performed manually in an office/branch. And as we mentioned before, it can also be related to a LoanPayment. We will see how to create those relationships later in this article.
 
 Note #2: Transaction types could (and should) be normalized in a separate entity. To keep the model simple, we are using a denormalized version.
 }
-------------------------------
-relations
+
+## relations
 
 Person – Employee
 Each Employee in our model is a single Person, but not all persons are employees. Once again, we need to establish a 1:N relationship between the two tables, N being either 0 or 1.

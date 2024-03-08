@@ -194,8 +194,8 @@ CREATE TABLE "Person_Employee"(
     "Person_id" INTEGER,
     "Employee_id" INTEGER,
     PRIMARY KEY("Person_id","Employee_id"),
-    FOREIGN KEY("Person_id") REFERENCES "Person"("PersonID"),
-    FOREIGN KEY("Employee_id") REFERENCES "Employee"("EmployeeID")
+    FOREIGN KEY("Person_id") REFERENCES "Person"("PersonID") ON DELETE CASCADE,
+    FOREIGN KEY("Employee_id") REFERENCES "Employee"("EmployeeID") ON DELETE CASCADE
 --Each Employee in our model is a single Person, but not all persons are employees. Once again, we need to establish a 1:N relationship between the two tables, N being either 0 or 1.
 );
 
@@ -203,8 +203,8 @@ CREATE TABLE "Branch_Employee"(
     "Branch_id" INTEGER,
     "Employee_id" INTEGER,
     PRIMARY KEY("Branch_id","Employee_id"),
-    FOREIGN KEY("Branch_id") REFERENCES "Branch"("BranchID"),
-    FOREIGN KEY("Employee_id") REFERENCES "Employee"("EmployeeID")
+    FOREIGN KEY("Branch_id") REFERENCES "Branch"("BranchID") ON DELETE CASCADE,
+    FOREIGN KEY("Employee_id") REFERENCES "Employee"("EmployeeID") ON DELETE CASCADE
 --All employees work at a branch of the bank, and every branch can have many employees, so we need to create a 1:N relationship between the Branch and Employee entities.
 );
 
@@ -212,8 +212,8 @@ CREATE TABLE "Customer_Account"(
     "Customer_id" INTEGER,
     "Account_id" INTEGER,
     PRIMARY KEY("Customer_id","Account_id"),
-    FOREIGN KEY("Customer_id") REFERENCES "Customer"("CustomerID"),
-    FOREIGN KEY("Account_id") REFERENCES "Account"("AccountID")
+    FOREIGN KEY("Customer_id") REFERENCES "Customer"("CustomerID") ON DELETE CASCADE,
+    FOREIGN KEY("Account_id") REFERENCES "Account"("AccountID") ON DELETE CASCADE
 --A customer can usually have multiple accounts; depending on legislation and regulations, most systems allow shared accounts between multiple individual customers (family members, etc.). To represent this in our system, we are going to create a many-to-one (M:N) relationship between Customer and Account.
 --After creating the relationship, we need to verify that the relationship is mandatory on the customer side. There can be customers without any account, but each account must be related to at least one customer.
 );
@@ -222,8 +222,8 @@ CREATE TABLE "Branch_Account"(
     "Branch_id" INTEGER,
     "Account_id" INTEGER,
     PRIMARY KEY("Branch_id","Account_id"),
-    FOREIGN KEY("Branch_id") REFERENCES "Branch"("BranchID"),
-    FOREIGN KEY("Account_id") REFERENCES "Account"("AccountID")
+    FOREIGN KEY("Branch_id") REFERENCES "Branch"("BranchID") ON DELETE CASCADE,
+    FOREIGN KEY("Account_id") REFERENCES "Account"("AccountID") ON DELETE CASCADE
 --This is a 1:N relationship, since a single branch can have multiple accounts and each account must belong to one and only one branch.
 
 --Customer – Loan
@@ -234,8 +234,8 @@ CREATE TABLE "Loan_LoanPayment"(
     "Loan_id" INTEGER,
     "LoanPayment_id" INTEGER,
     PRIMARY KEY("Loan_id","LoanPayment_id"),
-    FOREIGN KEY("Loan_id") REFERENCES "Loan"("LoanID"),
-    FOREIGN KEY("LoanPayment_id") REFERENCES "LoanPayment"("LoanPaymentID")
+    FOREIGN KEY("Loan_id") REFERENCES "Loan"("LoanID") ON DELETE CASCADE,
+    FOREIGN KEY("LoanPayment_id") REFERENCES "LoanPayment"("LoanPaymentID") ON DELETE CASCADE
 --This is also a 1:N relationship. We need to ensure that both sides are mandatory, since each payment must belong to a loan and each loan must have at least one scheduled payment.
 
 --LoanPayment – Transaction
@@ -246,16 +246,16 @@ CREATE TABLE "LoanPayment_Transaction"(
     "Transaction_id" INTEGER,
     "LoanPayment_id" INTEGER,
     PRIMARY KEY("Transaction_id","LoanPayment_id"),
-    FOREIGN KEY("Transaction_id") REFERENCES "Transaction"("TransactionID"),
-    FOREIGN KEY("LoanPayment_id") REFERENCES "LoanPayment"("LoanPaymentID")
+    FOREIGN KEY("Transaction_id") REFERENCES "Transaction"("TransactionID") ON DELETE CASCADE,
+    FOREIGN KEY("LoanPayment_id") REFERENCES "LoanPayment"("LoanPaymentID") ON DELETE CASCADE
 )
 
 CREATE TABLE "Account_Transaction"(
     "Transaction_id" INTEGER,
     "Account_id" INTEGER,
     PRIMARY KEY("Transaction_id","Account_id"),
-    FOREIGN KEY("Transaction_id") REFERENCES "Transaction"("TransactionID"),
-    FOREIGN KEY("Account_id") REFERENCES "Account"("AccountID")
+    FOREIGN KEY("Transaction_id") REFERENCES "Transaction"("TransactionID") ON DELETE CASCADE,
+    FOREIGN KEY("Account_id") REFERENCES "Account"("AccountID") ON DELETE CASCADE
 --This is also a 1:N relationship, since transactions involve a single account and accounts can have multiple transactions.
 );
 
@@ -263,8 +263,8 @@ CREATE TABLE "Empolyee_Transaction"(
     "Transaction_id" INTEGER,
     "Employee_id" INTEGER, -- Correct the column name spelling
     PRIMARY KEY("Transaction_id","Employee_id"),
-    FOREIGN KEY("Transaction_id") REFERENCES "Transaction"("TransactionID"),
-    FOREIGN KEY("Employee_id") REFERENCES "Employee"("EmployeeID")
+    FOREIGN KEY("Transaction_id") REFERENCES "Transaction"("TransactionID")  ON DELETE CASCADE,
+    FOREIGN KEY("Employee_id") REFERENCES "Employee"("EmployeeID") ON DELETE CASCADE
 --Most transactions are performed directly by users via banking apps, ONLINE BANKING, or ATMs. However, there are still some operations that can be made at a bank office and involve an employee. To support this, we need to establish a 1:N relationship between the Employee and Transaction entities and ensure that none of the sides are mandatory.
 
 );

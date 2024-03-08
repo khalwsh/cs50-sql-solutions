@@ -54,8 +54,8 @@ Address: The physical address of this branch. As with the Person entity, we are 
 
 PhoneNumber: The branch phone number. VARCHAR(20) datatype.
 
-### Employee
-{
+## Employee
+
 ##### Description:
 This entity will store information about the persons that are also bank employees.
 
@@ -70,7 +70,7 @@ Note #1: Each employee is related to a Person and to a Branch. We will see how t
 Note #2: Positions could (and should) be normalized in a separate entity. To keep the model simple, we are using a denormalized version.
 
 
-### Customer
+## Customer
 
 ##### Description:
 This entity will store information about the persons that are also bank customers.
@@ -89,7 +89,7 @@ Note #2: Customer type could (and should) be normalized in a separate entity. To
 
 }
 
-### Account
+## Account
 
 ##### Description:
 This entity keeps information about the different accounts each customer or group of customers can have in the bank.
@@ -115,7 +115,7 @@ Note #1: Each account is related to one or more Customer and to a Branch. We wil
 Note #2: Both account type and status could (and should) be normalized in separate entities. To keep the model simple, we are using a denormalized version.
 
 
-### Loan
+## Loan
 
 ##### Description:
 This entity keeps information about the different loans that the bank grants to customers
@@ -143,7 +143,7 @@ Note #1: Each loan is related to one Customer. We will see how to create those r
 
 Note #2: Both loan type and status could (and should) be normalized in separate entities. To keep the model simple, we are using a denormalized version.
 
-### Loan Payment
+## Loan Payment
 
 ##### Description:
 Loans usually have a scheduled number of payments that include both principal and interest.
@@ -163,8 +163,8 @@ InterestAmount: The expected interest amount to be paid on the scheduled date. D
 PaidAmount: The actual amount paid. DECIMAL(10, 2) datatype.
 PaidDate: The actual date when the payment was completed. DATE datatype and not mandatory.
 
-### Transaction
-{
+## Transaction
+
 ##### Description:
 Each operation performed in a bank is usually represented by one transaction (e.g. deposit, withdrawal) or multiple transactions (e.g. account transfers).
 
@@ -182,9 +182,9 @@ TransactionDate: The date and time the transaction was performed. DATETIME
 Note #1: Each transaction is related to one Account and can be related to another Transaction (for example, when a transfer between two accounts is performed). It can also be related to an Employee if it was performed manually in an office/branch. And as we mentioned before, it can also be related to a LoanPayment. We will see how to create those relationships later in this article.
 
 Note #2: Transaction types could (and should) be normalized in a separate entity. To keep the model simple, we are using a denormalized version.
-}
 
-## relations
+
+# relations
 
 Person – Employee
 Each Employee in our model is a single Person, but not all persons are employees. Once again, we need to establish a 1:N relationship between the two tables, N being either 0 or 1.

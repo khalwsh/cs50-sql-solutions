@@ -7,7 +7,7 @@ This project defines a relational database schema for a bank. The schema include
 
 ## ER Diagram
 
-<img src = "https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/ER%20Diagram.jpeg">
+<img src = "https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/ERD.jpeg">
 
 ## Scope
 

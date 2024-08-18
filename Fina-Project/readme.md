@@ -1,4 +1,4 @@
-# Bank Database Schema
+# Bank Database implemntation
 
 ## Overview
 

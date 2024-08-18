@@ -4,11 +4,6 @@
 
 This project defines a relational database schema for a bank. The schema includes tables for storing information about people, branches, employees, customers, accounts, loans, loan payments, and transactions. It also defines the relationships between these entities.
 
-
-## ER Diagram
-
-<img src = "https://github.com/khalwsh/cs50-sql-solutions/blob/main/Fina-Project/ERD.jpeg">
-
 ## Scope
 
 
